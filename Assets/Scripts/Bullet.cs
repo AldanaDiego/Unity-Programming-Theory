@@ -26,8 +26,9 @@ public class Bullet : MonoBehaviour
         this.movement = this.gameObject.AddComponent(pattern) as MovementPattern;
     }
 
-    public void DeleteMovement()
+    public void Deactivate()
     {
         Destroy(this.movement);
+        this.gameObject.SetActive(false);
     }
 }

@@ -8,8 +8,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int hp;
     [SerializeField] private int shootDelay = 1;
     [SerializeField] private float enterStagePosition;
+    [SerializeField] private float enterStageSpeed;
     
-    private float enterStageSpeed = 3.5f;
+    private EnemySpawner parentSpawner;
     private bool isEnteringStage = true;
 
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (this.isEnteringStage) {
-            this.transform.Translate(Vector3.left * Time.deltaTime * this.enterStageSpeed);
+            this.transform.Translate(Vector3.left * Time.deltaTime * this.enterStageSpeed, Space.World);
             if (this.transform.position.x <= this.enterStagePosition) {
                 this.isEnteringStage = false;
                 this.GetComponent<MovementPattern>().SetIsMoving(true);
@@ -41,12 +42,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SetParentSpawn(EnemySpawner enemySpawner)
+    {
+        this.parentSpawner = enemySpawner;
+    }
+
+    public float GetEnterStagePosition()
+    {
+        return this.enterStagePosition;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "PlayerBullet") {
-            Destroy(other.gameObject);
+            other.GetComponent<Bullet>().Deactivate();
             this.hp--;
             if (this.hp <= 0) {
+                this.parentSpawner.EnemyDestroyed();
                 Destroy(this.gameObject);
             }
         }

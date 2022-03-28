@@ -8,7 +8,7 @@ public class MoveUpDownSlow : MovementPattern
 
     protected override void Move()
     {
-        this.transform.Translate(direction * Time.deltaTime * this.movingSpeedSlow);
+        this.transform.Translate(direction * Time.deltaTime * this.movingSpeedSlow, Space.World);
     }
 
     protected override void CheckMoveStatus()

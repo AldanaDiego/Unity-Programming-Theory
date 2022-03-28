@@ -6,7 +6,7 @@ public class MoveStraightLeft : MovementPattern
 {
     protected override void Move()
     {
-        this.transform.Translate(Vector3.left * Time.deltaTime * this.bulletSpeed);
+        this.transform.Translate(Vector3.left * Time.deltaTime * this.bulletSpeed, Space.World);
     }
 
     protected override void CheckMoveStatus()

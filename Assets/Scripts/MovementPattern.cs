@@ -12,11 +12,12 @@ public abstract class MovementPattern : MonoBehaviour
 
     protected float bulletSpeed = 15.0f;
     protected float movingSpeedSlow = 2.5f;
+    protected float movingSpeedFast = 3.5f;
     
     // Start is called before the first frame update
     void Start()
     {
-        //this.isMoving = true;
+
     }
 
     // Update is called once per frame
@@ -37,8 +38,7 @@ public abstract class MovementPattern : MonoBehaviour
     protected void OnStoppedMoving()
     {
         if (this.gameObject.tag == "Bullet" || this.gameObject.tag == "PlayerBullet") {
-            this.GetComponent<Bullet>().DeleteMovement();
-            this.gameObject.SetActive(false);
+            this.GetComponent<Bullet>().Deactivate();
         }
     }
 
