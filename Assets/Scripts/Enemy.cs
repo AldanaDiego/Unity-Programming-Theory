@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //[SerializeField] private int hp = 1;
+    [SerializeField] private int hp;
     [SerializeField] private int shootDelay = 1;
     [SerializeField] private float enterStagePosition;
     
@@ -38,6 +38,17 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(this.shootDelay);
             GameObject bullet = BulletPool.Instance.GetEnemyBullet();
             bullet.GetComponent<Bullet>().Shoot(this.transform.position, typeof(MoveStraightLeft));
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "PlayerBullet") {
+            Destroy(other.gameObject);
+            this.hp--;
+            if (this.hp <= 0) {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

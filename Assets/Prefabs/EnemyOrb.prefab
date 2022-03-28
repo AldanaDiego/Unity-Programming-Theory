@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8549864209474619249}
   - component: {fileID: 7858686174803577}
-  - component: {fileID: 7628989969855023955}
   - component: {fileID: -7641937060496952942}
   - component: {fileID: 3397371517644468701}
+  - component: {fileID: 7789279514523009067}
   m_Layer: 0
   m_Name: EnemyOrb
   m_TagString: Untagged
@@ -85,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7628989969855023955
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8615265263050328814}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.12
 --- !u!114 &-7641937060496952942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec3b659199f6ef46aa58370a79c931f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 3
   shootDelay: 1
   enterStagePosition: 9
 --- !u!114 &3397371517644468701
@@ -127,3 +112,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299fcb082894a6c43b52edf6eb1f897d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &7789279514523009067
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615265263050328814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.13
+  m_Center: {x: 0, y: 0, z: 0}

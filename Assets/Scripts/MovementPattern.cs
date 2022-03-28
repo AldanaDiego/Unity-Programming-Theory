@@ -36,7 +36,7 @@ public abstract class MovementPattern : MonoBehaviour
 
     protected void OnStoppedMoving()
     {
-        if (this.gameObject.tag == "Bullet") {
+        if (this.gameObject.tag == "Bullet" || this.gameObject.tag == "PlayerBullet") {
             this.GetComponent<Bullet>().DeleteMovement();
             this.gameObject.SetActive(false);
         }
