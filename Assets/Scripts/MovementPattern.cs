@@ -4,10 +4,14 @@ using UnityEngine;
 
 public abstract class MovementPattern : MonoBehaviour
 {
-    protected float rightBound = 10.0f;
+    protected float rightBound = 12.0f;
+    protected float leftBound = -12.0f;
+    protected float upperBound = 5.0f;
+    protected float lowerBound = -5.0f;
     protected bool isMoving = true;
 
     protected float bulletSpeed = 15.0f;
+    protected float movingSpeedSlow = 2.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -36,5 +40,10 @@ public abstract class MovementPattern : MonoBehaviour
             this.GetComponent<Bullet>().DeleteMovement();
             this.gameObject.SetActive(false);
         }
+    }
+
+    public void SetIsMoving(bool moving)
+    {
+        this.isMoving = moving;
     }
 }

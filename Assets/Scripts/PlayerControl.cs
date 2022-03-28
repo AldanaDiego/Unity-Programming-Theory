@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    private float speed = 0.025f;
+    private float speed = 7.0f;
     private float posX = -9.0f;
     private float verticalBound = 5.0f;
     private Vector3 limitYPositive;
@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         float movement = Input.GetAxis("Vertical");
-        this.transform.position += new Vector3(0, movement * this.speed, 0);
+        this.transform.position += new Vector3(0, movement * this.speed * Time.deltaTime, 0);
         
         if (this.transform.position.y > this.limitYPositive.y) {
             this.transform.position = this.limitYPositive;
