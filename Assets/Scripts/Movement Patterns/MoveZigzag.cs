@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//INHERITANCE
 public class MoveZigzag : MovementPattern
 {
     private Vector3 dirVertical = Vector3.up;
@@ -14,12 +15,14 @@ public class MoveZigzag : MovementPattern
         this.startPositionX = this.GetComponent<Enemy>().GetEnterStagePosition();   
     }
     
+    //POLYMORPHISM
     protected override void Move()
     {
         this.transform.Translate(this.dirVertical * Time.deltaTime * this.movingSpeedFast, Space.World);
         this.transform.Translate(this.dirHorizontal * Time.deltaTime * this.movingSpeedSlow, Space.World);
     }
 
+    //POLYMORPHISM
     protected override void CheckMoveStatus()
     {
         if (this.transform.position.y > this.upperBound) {

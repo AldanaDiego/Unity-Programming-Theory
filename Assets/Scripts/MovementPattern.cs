@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//INHERITANCE
+//Parent class for movement behaviour of enemies/bullets
 public abstract class MovementPattern : MonoBehaviour
 {
     protected float rightBound = 12.0f;
@@ -35,6 +37,7 @@ public abstract class MovementPattern : MonoBehaviour
 
     protected abstract void CheckMoveStatus();
 
+    //ABSTRACTION
     protected void OnStoppedMoving()
     {
         if (this.gameObject.tag == "Bullet" || this.gameObject.tag == "PlayerBullet") {
@@ -42,6 +45,7 @@ public abstract class MovementPattern : MonoBehaviour
         }
     }
 
+    //ENCAPSULATION
     public void SetIsMoving(bool moving)
     {
         this.isMoving = moving;
