@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    private void SpawnWave()
+    public void SpawnWave()
     {
         this.enemyCount = Random.Range(2, 4);
         for (int i = 0; i < this.enemyCount; i++) {
@@ -45,6 +45,13 @@ public class EnemySpawner : MonoBehaviour
         this.enemyCount--;
         if (this.enemyCount <= 0) {
             this.SpawnWave();
+        }
+    }
+
+    public void Clean()
+    {
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+            Destroy(enemy);
         }
     }
 }

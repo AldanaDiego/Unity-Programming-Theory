@@ -34,4 +34,18 @@ public class PlayerControl : MonoBehaviour
             bullet.GetComponent<Bullet>().Shoot(this.transform.position, typeof(MoveStraightRight));
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Bullet") {
+            other.GetComponent<Bullet>().Deactivate();
+            this.gameObject.SetActive(false);
+            GameManager.Instance.TriggerGameOver();
+        }
+    }
+
+    public void Respawn()
+    {
+        this.gameObject.SetActive(true);
+    }
 }
